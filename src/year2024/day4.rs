@@ -1,3 +1,5 @@
+//! https://adventofcode.com/2024/day/4
+
 const CARDINAL_DIRECTIONS: [(i32, i32); 4] = [
     (0, -1), // N
     (1, 0),  // E
