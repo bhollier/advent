@@ -9,25 +9,25 @@ lazy_static! {
     static ref MUL_REGEX: Regex = Regex::new(r"mul\((\d\d?\d?),(\d\d?\d?)\)").unwrap();
 }
 
-fn part_1(input: &String) -> i64 {
+fn part_1(input: &str) -> i64 {
     MUL_REGEX
-        .captures_iter(input.as_str())
+        .captures_iter(input)
         .map(|g| g.extract())
         .map(|(_, [left, right])| (left.parse::<i64>().unwrap(), right.parse::<i64>().unwrap()))
         .map(|(left, right)| left * right)
         .sum()
 }
 
-fn part_2(input: &String) -> i64 {
+fn part_2(input: &str) -> i64 {
     // Construct a set of ranges between `don't()` and `do()` where matches should be ignored
     let disabled_regex = Regex::new(r"(don't\(\))[\s\S]+?(do\(\))").unwrap();
     let disabled_ranges: HashSet<Range<usize>> = HashSet::from_iter(
         disabled_regex
-            .captures_iter(input.as_str())
+            .captures_iter(input)
             .map(|g| g.get(0).unwrap().range()),
     );
     MUL_REGEX
-        .captures_iter(input.as_str())
+        .captures_iter(input)
         .filter(|g| {
             let pos = &g.get(0).unwrap().start();
             disabled_ranges
@@ -41,7 +41,7 @@ fn part_2(input: &String) -> i64 {
         .sum()
 }
 
-pub fn run(input: &String) {
+pub fn run(input: &str) {
     println!("part 1 solution: {}", part_1(input));
     println!("part 2 solution: {}", part_2(input));
 }

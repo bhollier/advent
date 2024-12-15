@@ -2,7 +2,7 @@
 
 use std::collections::HashMap;
 
-fn parse_input(input: &String) -> (Vec<i32>, Vec<i32>) {
+fn parse_input(input: &str) -> (Vec<i32>, Vec<i32>) {
     input
         .lines()
         .filter(|line| !line.is_empty())
@@ -16,7 +16,7 @@ fn parse_input(input: &String) -> (Vec<i32>, Vec<i32>) {
         .unzip()
 }
 
-fn part_1(input: &String) -> i32 {
+fn part_1(input: &str) -> i32 {
     let (mut left, mut right) = parse_input(input);
 
     left.sort();
@@ -28,7 +28,7 @@ fn part_1(input: &String) -> i32 {
         .sum()
 }
 
-fn part_2(input: &String) -> i32 {
+fn part_2(input: &str) -> i32 {
     let (left, right) = parse_input(input);
 
     let occurrences: HashMap<&i32, i32> = right.iter().fold(HashMap::new(), |mut map, number| {
@@ -41,7 +41,7 @@ fn part_2(input: &String) -> i32 {
         .sum()
 }
 
-pub fn run(input: &String) {
+pub fn run(input: &str) {
     println!("part 1 solution: {}", part_1(input));
     println!("part 2 solution: {}", part_2(input));
 }

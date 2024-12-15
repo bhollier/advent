@@ -1,6 +1,6 @@
 //! https://adventofcode.com/2024/day/2
 
-fn parse_input<'a>(input: &'a String) -> impl Iterator<Item = Vec<i64>> + use<'a> {
+fn parse_input<'a>(input: &'a str) -> impl Iterator<Item = Vec<i64>> + use<'a> {
     input.lines().filter(|line| !line.is_empty()).map(|line| {
         line.split_whitespace()
             .map(|str| str.parse().unwrap())
@@ -17,11 +17,11 @@ fn valid_report(report: &Vec<i64>) -> bool {
     within_range && same_direction
 }
 
-fn part_1(input: &String) -> usize {
+fn part_1(input: &str) -> usize {
     parse_input(input).filter(valid_report).count()
 }
 
-fn part_2(input: &String) -> usize {
+fn part_2(input: &str) -> usize {
     parse_input(input)
         .filter(|report| {
             // Brute force check each permutation of the report without a level
@@ -34,7 +34,7 @@ fn part_2(input: &String) -> usize {
         .count()
 }
 
-pub fn run(input: &String) {
+pub fn run(input: &str) {
     println!("part 1 solution: {}", part_1(input));
     println!("part 2 solution: {}", part_2(input));
 }
