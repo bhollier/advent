@@ -37,7 +37,7 @@ fn parse_input(input: &str) -> Vec<(u64, Vec<u64>)> {
         .collect()
 }
 
-fn solve<'a>(
+fn solve(
     solution: &u64,
     symbol: Rc<Symbol>,
     remaining: &[u64],
