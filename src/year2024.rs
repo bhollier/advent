@@ -8,6 +8,7 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
+mod day9;
 
 pub static DAYS: phf::Map<u8, fn(&str)> = phf_map! {
     1_u8 => day1::run,
@@ -18,4 +19,5 @@ pub static DAYS: phf::Map<u8, fn(&str)> = phf_map! {
     6_u8 => day6::run,
     7_u8 => day7::run,
     8_u8 => day8::run,
+    9_u8 => day9::run,
 };
